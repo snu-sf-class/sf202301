@@ -48,6 +48,8 @@ TBA
             * ```alt + right``` : interpret to right before cursor
             * ```alt + end``` : interpret until end of file
             * ```alt + home``` : reset
+            * more commands : ```F1``` & type ```Coq:```
+                * example : Coq: Prompt Check
     + Emacs: [Company-Coq](https://github.com/cpitclaudel/company-coq). Follow the setup instructions.
         * If it shows `Searching for program No such file or directory coqtop` error, please add `(custom-set-variables '(coq-prog-name "PATH/TO/coqtop"))` to `.emacs` file.
         * In case of MacOS, coqtop is at `/Applications/CoqIDE_8.9.1.app/Contents/Resources/bin/`.
