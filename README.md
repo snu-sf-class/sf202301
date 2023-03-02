@@ -25,11 +25,12 @@ TBA
 
 ## Coq
 
-- Install Coq [8.12.0](https://coq.inria.fr).
+- Install Coq [8.16.1](https://coq.inria.fr).
     + Using an installer (Windows, MacOS)
         * Download [Binaries](https://coq.inria.fr/download) and install it.
+        * Using Coq in Windows could have unexpected, unsupported problem. TA cannot help you in this case.
 
-    + Using OPAM (Linux / MacOS)
+    + Using OPAM (Linux / MacOS) (recommended)
         * OPAM is OCaml package manager, and you can use it to install Coq in Linux.
         * See [https://coq.inria.fr/opam/www/using.html](https://coq.inria.fr/opam/www/using.html).
 
