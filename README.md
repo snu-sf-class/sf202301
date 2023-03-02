@@ -39,6 +39,9 @@ TBA
 
 - Install IDE for Coq.
     + CoqIDE: installed by default.
+    + VS Code: [VSCoq](https://github.com/coq-community/vscoq/tree/vscoq1). Follow the setup instructions.
+        * In this semester, we will use VS Code as default IDE.
+        * This semester is the first try to use VS Code. So, if you have trouble using VSCoq, you can send an email to TA.
     + Emacs: [Company-Coq](https://github.com/cpitclaudel/company-coq). Follow the setup instructions.
         * If it shows `Searching for program No such file or directory coqtop` error, please add `(custom-set-variables '(coq-prog-name "PATH/TO/coqtop"))` to `.emacs` file.
         * In case of MacOS, coqtop is at `/Applications/CoqIDE_8.9.1.app/Contents/Resources/bin/`.
