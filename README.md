@@ -28,7 +28,7 @@ TBA
 - Install Coq [8.16.1](https://coq.inria.fr).
     + Using an installer (Windows, MacOS)
         * Download [Binaries](https://coq.inria.fr/download) and install it.
-        * Using Coq in Windows could have unexpected, unsupported problem. TA cannot help you in this case.
+        * **Using Coq in Windows could have unexpected, unsupported problem. TA cannot help you in this case.**
 
     + Using OPAM (Linux / MacOS) (recommended)
         * OPAM is OCaml package manager, and you can use it to install Coq in Linux.
@@ -54,6 +54,10 @@ TBA
     + Emacs: [Company-Coq](https://github.com/cpitclaudel/company-coq). Follow the setup instructions.
         * If it shows `Searching for program No such file or directory coqtop` error, please add `(custom-set-variables '(coq-prog-name "PATH/TO/coqtop"))` to `.emacs` file.
         * In case of MacOS, coqtop is at `/Applications/CoqIDE_8.9.1.app/Contents/Resources/bin/`.
+        
+- Tips for those using Windows
+    + Using [WSL](https://learn.microsoft.com/ko-kr/windows/wsl/install) allows you work on linux.
+    + In WSL, [WSL extension of VS Code](https://learn.microsoft.com/ko-kr/windows/wsl/tutorials/wsl-vscode) is recommended.
 
 #### Honor Code: *DO NOT CHEAT*
 - Do not copy others' source code, including other students' and resources around the web. Especially, do not consult with public repositories on software foundations.
