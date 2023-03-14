@@ -10,8 +10,7 @@
 - Please use email to ask questions (Don't use GitHub Issues)
 
 ## Announcements
-
-TBA
+- Mar. 14: Example code introduced in lecture is uploaded and updated in "lecture" directory
 
 ## Assignments
 
