@@ -11,6 +11,7 @@
 
 ## Announcements
 - Mar. 14: Example code introduced in lecture is uploaded and updated in "lecture" directory
+- Mar. 15: **3/28, 3/30일은 교수님의 덴마크 출장 관계로 수업이 없습니다.**
 
 ## Assignments
 
