@@ -197,11 +197,19 @@ Theorem minus_n_n : forall n,
   minus n n = 0.
 Proof.
   (* WORKED IN CLASS *)
-  intros n. induction n as [| n' IHn'].
+  intros n.
+  induction n as [| n' IHn'].
   - (* n = 0 *)
     simpl. reflexivity.
   - (* n = S n' *)
-    simpl. rewrite -> IHn'. reflexivity.  Qed.
+    simpl. rewrite -> IHn'. reflexivity.
+Defined.
+
+(*
+Inductive eq {A : Type} (x : A) : A -> Prop :=
+| eq_refl : eq x x (* x = x *)
+.
+*)
 
 (** (The use of the [intros] tactic in these proofs is actually
     redundant.  When applied to a goal that contains quantified
@@ -298,14 +306,25 @@ Proof.
     needed "sub-theorem" right at the point where it is used.  The
     [assert] tactic allows us to do this. *)
 
+(* Lemma N00N: forall n, n + 0 + 0 = n. *)
+(* Proof. *)
+(*   intros. *)
+(*   rewrite add_comm. simpl. *)
+(*   rewrite add_comm. simpl. reflexivity.    *)
+(* Qed. *)
+
 Theorem mult_0_plus' : forall n m : nat,
   (n + 0 + 0) * m = n * m.
 Proof.
   intros n m.
-  assert (H: n + 0 + 0 = n).
-    { rewrite add_comm. simpl. rewrite add_comm. reflexivity. }
-  rewrite -> H.
-  reflexivity.  Qed.
+  assert (N00N: n + 0 + 0 = n).
+  { rewrite add_comm. simpl.
+    rewrite add_comm. simpl. reflexivity. }
+  rewrite -> N00N.
+  reflexivity.
+Qed.
+
+Print mult_0_plus'.
 
 (** The [assert] tactic introduces two sub-goals.  The first is
     the assertion itself; by prefixing it with [H:] we name the
@@ -424,7 +443,8 @@ Proof.
   - (* n = 0 *)
     reflexivity.
   - (* n = S n' *)
-    simpl. rewrite IHn'. reflexivity.   Qed.
+    simpl. rewrite IHn'. reflexivity.
+Qed.
 
 (** ... and if you're used to Coq you might be able to step
     through the tactics one after the other in your mind and imagine
