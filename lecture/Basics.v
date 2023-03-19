@@ -966,6 +966,12 @@ Fixpoint eqb (n m : nat) : bool :=
             end
   end.
 
+Print eq.
+
+(* Theorem eqb_correct: forall n m, *)
+(*     eqb n m = true -> n = m. *)
+
+
 (** Similarly, the [leb] function tests whether its first argument is
     less than or equal to its second argument, yielding a boolean. *)
 
@@ -1046,8 +1052,15 @@ forall n, P(n)
 fun n => code : P(n)
  *)
 
-Definition plus_O_n : forall n : nat, 0 + n = n :=
-  fun n => eq_refl n.
+Lemma plus_O_n:
+  forall n : nat, 0 + n = n.
+Proof.
+  intros.
+  simpl. reflexivity.
+Qed.
+
+(* Definition plus_O_n : forall n : nat, 0 + n = n := *)
+(*   fun n => eq_refl n. *)
 (*
 n + 0
 --->
@@ -1056,6 +1069,20 @@ match n with
 | S n' => ...
 end
 *)
+
+Print eq.
+
+(*
+Lemma plus_n_O: forall (n : nat), n + 0 = n.
+Proof.
+  induction n.
+  - simpl. reflexivity.
+  - simpl. rewrite IHn. reflexivity.
+Qed.
+ *)
+
+Print plus_n_O.
+
 
 Definition plus_n_O: forall (n : nat), n + 0 = n :=
   fix self n :=
@@ -1073,48 +1100,46 @@ Definition plus_n_O: forall (n : nat), n + 0 = n :=
 
 Compute plus_n_O 100.
 
-Definition plus_n_O : forall n : nat, n + 0 = n.
-Proof.
-  fix self 1. intros. destruct n.
-  - reflexivity.
-  - simpl. rewrite self. reflexivity.
-Defined.
+(* Definition plus_n_O : forall n : nat, n + 0 = n. *)
+(* Proof. *)
+(*   fix self 1. intros. destruct n. *)
+(*   - reflexivity. *)
+(*   - simpl. rewrite self. reflexivity. *)
+(* Defined. *)
 
 Print plus_n_O.
 
-Goal  plus_n_O = plus_n_O.
-  unfold plus_n_O at 1.
-  unfold eq_ind_r.
-  unfold eq_ind. unfold eq_sym.
+(* Goal  plus_n_O = plus_n_O. *)
+(*   unfold plus_n_O at 1. *)
+(*   unfold eq_ind_r. *)
+(*   unfold eq_ind. unfold eq_sym. *)
   
 
-Definition plus_n_O : forall n : nat, n + 0 = n :=
-  fun n => match n with
-           | 0 => eq_refl _
-           | S n' =>  ???  : S (n' + 0) = S n'
-           end.
+(* Definition plus_n_O : forall n : nat, n + 0 = n := *)
+(*   fun n => match n with *)
+(*            | 0 => eq_refl _ *)
+(*            | S n' =>  ???  : S (n' + 0) = S n' *)
+(*            end. *)
 
 Compute plus_O_n 120.
 
 
-Check (forall n, (exists x, exists y, exists z, exp x n + exp y n = exp z n) -> False).
+(* Check (forall n, (exists x, exists y, exists z, exp x n + exp y n = exp z n) -> False). *)
 
-Axiom genius : forall P:Prop, P \/ not P.
+(* Axiom genius : forall P:Prop, P \/ not P. *)
 
-
-
-vector n = the set of lists of length n
+(*
+ vector n = the set of lists of length n
 
  n:nat -> vector n
 
  forall n:nat, vector n                 
-                          
+*)                          
 
-
-Theorem plus_O_n : forall n : nat, 0 + n = n.
-Proof.
-  intros n. simpl. reflexivity.
-Qed.
+(* Theorem plus_O_n : forall n : nat, 0 + n = n. *)
+(* Proof. *)
+(*   intros n. simpl. reflexivity. *)
+(* Qed. *)
 
 
 
@@ -1244,8 +1269,9 @@ Proof.
   (* move the hypothesis into the context: *)
   intros H.
   (* rewrite the goal using the hypothesis: *)
-  rewrite -> H.
-  reflexivity.  Qed.
+  rewrite <-H.
+  reflexivity.
+Qed.
 
 (** The first line of the proof moves the universally quantified
     variables [n] and [m] into the context.  The second moves the
@@ -1357,9 +1383,11 @@ Abort.
 Theorem plus_1_neq_0 : forall n : nat,
   (n + 1) =? 0 = false.
 Proof.
-  intros n. destruct n as [| n'] eqn:E.
-  - reflexivity.
-  - reflexivity.   Qed.
+  intros n. simpl.
+  destruct n as [| n'] eqn:E.
+  - simpl. reflexivity.
+  - simpl. reflexivity.
+Qed.
 
 (** The [destruct] generates _two_ subgoals, which we must then
     prove, separately, in order to get Coq to accept the theorem.
