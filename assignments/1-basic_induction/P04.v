@@ -1,6 +1,6 @@
 Require Export P03.
 
-Theorem andb_eq_orb :
+Theorem xorb_eq_andb :
   forall (b c : bool),
   (xorb b c = andb b c) ->
   b = c.
