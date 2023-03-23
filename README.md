@@ -12,10 +12,17 @@
 ## Announcements
 - Mar. 14: Example code introduced in lecture is uploaded and updated in "lecture" directory
 - Mar. 15: **3/28, 3/30일은 교수님의 덴마크 출장 관계로 수업이 없습니다.**
+- Mar. 23: Assignment 1 is uploaded.
 
 ## Assignments
 
-TBA
+- Download skeleton code and replace `FILL_IN_HERE` with your code in P**.v.
+- Visit http://147.46.245.142:8000 and log-in with your id (e.g. 2016-12345). Your initial password is equivalent to your id.
+- Change your password before submitting your assignments.
+- If you forget your password, email to ta(sf@sf.snu.ac.kr).
+- Use 'make submission' command and attach the zip file.
+- No delayed submission.
+- Claims: within 2 weeks from the due date, please.
 
 ## Grading(tentative)
 - Attendance: 5%
