@@ -24,6 +24,10 @@
 - No delayed submission.
 - Claims: within 2 weeks from the due date, please.
 
+| Due        	| Description                   	 	 	 	 	 	 	 	 	 	 	 	 	 	|
+|------------	|-----------------------------------------------------------------------------------
+| Apr. 6 23:59  | Assignment 1 - Basic & Induction 	 	 	 	 	 	 	 	 	 	 	 	 	 	|
+
 ## Grading(tentative)
 - Attendance: 5%
 - Assignments: 25%
