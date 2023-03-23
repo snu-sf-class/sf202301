@@ -607,8 +607,10 @@ Qed.
 Theorem app_assoc : forall l1 l2 l3 : natlist,
   (l1 ++ l2) ++ l3 = l1 ++ (l2 ++ l3).
 Proof.
-  intros l1 l2 l3. induction l1 as [| n l1' IHl1'].
+  intros l1 l2 l3.
+  induction l1 as [| n l1' IHl1'].
   - (* l1 = nil *)
+    simpl.
     reflexivity.
   - (* l1 = cons n l1' *)
     simpl. rewrite -> IHl1'. reflexivity.  Qed.
@@ -668,6 +670,8 @@ Fixpoint rev (l:natlist) : natlist :=
   | h :: t => rev t ++ [h]
   end.
 
+Compute rev [1;2;3;4].
+
 Example test_rev1:            rev [1;2;3] = [3;2;1].
 Proof. reflexivity.  Qed.
 Example test_rev2:            rev nil = nil.
@@ -683,6 +687,7 @@ Theorem rev_length_firsttry : forall l : natlist,
 Proof.
   intros l. induction l as [| n l' IHl'].
   - (* l = nil *)
+    simpl.
     reflexivity.
   - (* l = n :: l' *)
     (* This is the tricky case.  Let's begin as usual
@@ -707,6 +712,7 @@ Proof.
   (* WORKED IN CLASS *)
   intros l1 l2. induction l1 as [| n l1' IHl1'].
   - (* l1 = nil *)
+    simpl.
     reflexivity.
   - (* l1 = cons *)
     simpl. rewrite -> IHl1'. reflexivity.  Qed.
@@ -720,6 +726,8 @@ Proof.
 
 (** Now we can complete the original proof. *)
 
+Require Import Lia.
+
 Theorem rev_length : forall l : natlist,
   length (rev l) = length l.
 Proof.
@@ -727,8 +735,10 @@ Proof.
   - (* l = nil *)
     reflexivity.
   - (* l = cons *)
-    simpl. rewrite -> app_length.
-    simpl. rewrite -> IHl'. rewrite add_comm.
+    simpl. rewrite <- IHl'.
+    rewrite -> app_length.
+    simpl. (* nia. *)
+    rewrite add_comm. simpl.
     reflexivity.
 Qed.
 
@@ -1036,6 +1046,8 @@ Fixpoint nth_error (l:natlist) (n:nat) : natoption :=
                | S n' => nth_error l' n'
                end
   end.
+
+Compute nth_error [1;2;3;4] 10.
 
 Example test_nth_error1 : nth_error [4;5;6;7] 0 = Some 4.
 Proof. reflexivity. Qed.
