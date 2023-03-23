@@ -17,6 +17,7 @@
 ## Assignments
 
 - Download skeleton code and replace `FILL_IN_HERE` with your code in P**.v.
+- Each assignment have forbidden keyword in forbidden.txt. Try not to use those keywords.
 - Visit http://147.46.245.142:8000 and log-in with your id (e.g. 2016-12345). Your initial password is equivalent to your id.
 - Change your password before submitting your assignments.
 - If you forget your password, email to ta(sf@sf.snu.ac.kr).
