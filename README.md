@@ -28,7 +28,7 @@
 | Due        	 | Description                   	 	 	 	 	 	 	 	 	 	 	 	 	 	    |
 |------------	 |---------------------------------------------------------------------------------------
 | Apr. 6 23:59   | Assignment 1 - Basic & Induction 	 	 	 	 	 	 	 	 	 	 	 	 	 	|
-| Apr. 27 23:59  | Assignment 2 - Lists & Poly & Tactics 	 	 	 	 	 	 	 	 	 	 	 	 	|
+| Apr. 27 23:59  | Assignment 2 - Lists & Poly & Tactics & Logic	 	 	 	 	 	 	 	 	 	 	|
 
 ## Grading(tentative)
 - Attendance: 5%
