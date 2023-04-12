@@ -1,0 +1,15 @@
+Axiom
+admit
+Admitted
+tauto
+eauto
+auto
+intuition
+firstorder
+omega
+romega
+micromega
+lia
+nia
+psatz
+trivial
