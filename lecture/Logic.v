@@ -497,6 +497,10 @@ Proof.
   apply G in H. destruct H.
 Qed.
 
+(* classical: forall P, P \/ ~P *)
+(* Compute classical (fetmat_last). *)
+(* (forall P, P \/ ~P) <-> (forall P, ~~P -> P) *)
+
 (** **** Exercise: 2 stars, advanced (double_neg_inf)
 
     Write an informal proof of [double_neg]:
@@ -616,6 +620,13 @@ Proof. apply I. Qed.
     constructors were hypothetically equal, then we could use [match]
     to convert an unprovable statement (like [False]) to one that is
     provable (like [True]). *)
+
+(*
+Theorem disc_example : forall n, ~ (O = S n).
+Proof.
+  red. intros. inversion H.
+Qed.
+*)
 
 Definition disc_fn (n: nat) : Prop :=
   match n with
@@ -793,7 +804,7 @@ Definition Even x := exists n : nat, x = double n.
 
 Lemma four_is_Even : Even 4.
 Proof.
-  unfold Even. exists 2. reflexivity.
+  unfold Even. exists 2. simpl. eauto.
 Qed.
 
 (** Conversely, if we have an existential hypothesis [exists x, P] in
@@ -805,7 +816,9 @@ Theorem exists_example_2 : forall n,
   (exists o, n = 2 + o).
 Proof.
   (* WORKED IN CLASS *)
-  intros n [m Hm]. (* note implicit [destruct] here *)
+  intros. destruct H as [m Hm].
+  (* intros n [m Hm]. (* note implicit [destruct] here *) *)
+  (* eexists. apply Hm. *)
   exists (2 + m).
   apply Hm.  Qed.
 
@@ -862,11 +875,19 @@ Proof.
 (** We can translate this directly into a straightforward recursive
     function taking an element and a list and returning a proposition (!): *)
 
+Inductive In1 {A : Type} (x : A) : list A -> Prop :=
+| In_hd tl : In1 x (x :: tl)
+| In_tl y tl (pf: In1 x tl) : In1 x (y :: tl)
+.
+
 Fixpoint In {A : Type} (x : A) (l : list A) : Prop :=
   match l with
   | [] => False
   | x' :: l' => x' = x \/ In x l'
   end.
+
+Check (forall A x l, @In1 A x l <-> @In A x l).
+Compute In 3 [1;3;2].
 
 (** When [In] is applied to a concrete list, it expands into a
     concrete sequence of nested disjunctions. *)
@@ -882,8 +903,8 @@ Example In_example_2 :
   exists n', n = 2 * n'.
 Proof.
   (* WORKED IN CLASS *)
-  simpl.
-  intros n [H | [H | []]].
+  intros n H. simpl in H.
+  destruct H as [H | [H | []]].
   - exists 1. rewrite <- H. reflexivity.
   - exists 2. rewrite <- H. reflexivity.
 Qed.
@@ -907,7 +928,7 @@ Proof.
   - (* l = x' :: l' *)
     simpl. intros [H | H].
     + rewrite H. left. reflexivity.
-    + right. apply IHl'. apply H.
+    + right. eauto. (* apply IHl'. apply H. *)
 Qed.
 
 (** This way of defining propositions recursively, though convenient
@@ -1081,6 +1102,14 @@ Proof.
   reflexivity.
 Qed.
 
+Lemma foo: forall x y,
+    (x + y) + (x + y) = (x + y) + (y + x).
+Proof.
+  intros.
+  rewrite (add_comm x y) at 2.
+  eauto.
+Qed.
+
 (** Let's see another example of using a theorem like a function.
 
     The following theorem says: any list [l] containing some element
@@ -1198,6 +1227,7 @@ Qed.
     _any_ type -- in particular, we can write propositions claiming
     that two _functions_ are equal to each other: *)
 
+
 Example function_equality_ex1 :
   (fun x => 3 + x) = (fun x => (pred 4) + x).
 Proof. reflexivity. Qed.
@@ -1227,6 +1257,9 @@ Abort.
 
 (** However, if we like, we can add functional extensionality to Coq's
     core using the [Axiom] command. *)
+
+(* Require Import FunctionalExtensionality. *)
+(* Check @functional_extensionality_dep. *)
 
 Axiom functional_extensionality : forall {X Y: Type}
                                     {f g : X -> Y},
@@ -1302,6 +1335,28 @@ Theorem tr_rev_correct : forall X, @tr_rev X = @rev X.
 Proof.
 (* FILL IN HERE *) Admitted.
 (** [] *)
+
+Fixpoint eqb n m : bool :=
+  match n, m with
+  | 0, 0 => true
+  | S n, S m => eqb n m
+  | _, _ => false
+  end.
+
+Check (forall n: nat, n >= 3 -> (exists a b c: nat, exp a n + exp b n = exp c n) -> False).
+
+Check (forall n: nat, n >= 3 -> (exists a b c: nat, exp a n + exp b n = exp c n) -> bool).
+
+forall n m, eq n m
+<->
+forall n m, eqb n m = true
+      
+Compute eqb 3 3.
+
+
+
+
+
 
 (* ================================================================= *)
 (** ** Propositions vs. Booleans
