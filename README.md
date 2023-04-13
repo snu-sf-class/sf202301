@@ -10,6 +10,7 @@
 - Please use email to ask questions (Don't use GitHub Issues)
 
 ## Announcements
+- Apr. 13: Assignment 2 is uploaded.
 - Apr. 12: Midterm will be held on Apr. 30th Sun, 2 - 5 pm
 - Mar. 23: Assignment 1 is uploaded.
 - Mar. 14: Example code introduced in lecture is uploaded and updated in "lecture" directory
