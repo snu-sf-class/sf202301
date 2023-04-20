@@ -10,6 +10,7 @@
 - Please use email to ask questions (Don't use GitHub Issues)
 
 ## Announcements
+- Apr. 20: [Midterm exam announcement](https://github.com/snu-sf-class/sf202301/blob/main/MidtermInstruction.md)
 - Apr. 13: Assignment 2 is uploaded.
 - Apr. 12: Midterm will be held on Apr. 30th Sun, 2 - 5 pm
 - Mar. 23: Assignment 1 is uploaded.
