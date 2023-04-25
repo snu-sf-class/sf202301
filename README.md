@@ -19,8 +19,9 @@
 ## Assignments
 
 - Download skeleton code and replace `FILL_IN_HERE` with your code in P**.v.
-- Each assignment have forbidden keyword in forbidden.txt. Try not to use those keywords.
-- Assignment with dependencies is scored using default skeleton file as dependencies in server. So, using custom definitions in different files not allowed.
+- **Each assignment have forbidden keyword in forbidden.txt. Try not to use those keywords.**
+- **Assignment with dependencies is scored using default skeleton file as dependencies in server. So, using custom definitions in different files not allowed.**
+- **Try to finish your proof in one proof environment. Write additional 'Lemma' is not recommended. Use 'assert' tactic instead.**
 - Visit http://147.46.245.142:8000 and log-in with your id (e.g. 2016-12345). Your initial password is equivalent to your id.
 - Change your password before submitting your assignments.
 - If you forget your password, email to ta(sf@sf.snu.ac.kr).
@@ -77,7 +78,7 @@
 
 ## Tactics
 
-- You can look up [Coq Reference Manual](https://coq.inria.fr/distrib/current/refman/proofs/writing-proofs/index.html) to know more about Coq tactics.
+- You can look up manuals about [Basic tactics](https://coq.inria.fr/distrib/current/refman/proofs/writing-proofs/index.html), [Automatic solver](https://coq.inria.fr/refman/proofs/automatic-tactics/index.html), and [Ltac](https://coq.inria.fr/refman/proof-engine/ltac.html) for more information about proof techniques.
 
 #### Honor Code: *DO NOT CHEAT*
 - Do not copy others' source code, including other students' and resources around the web. Especially, do not consult with public repositories on software foundations.
