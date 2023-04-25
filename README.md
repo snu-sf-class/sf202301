@@ -75,6 +75,10 @@
     + Using [WSL](https://learn.microsoft.com/ko-kr/windows/wsl/install) allows you work on linux.
     + In WSL, [WSL extension of VS Code](https://learn.microsoft.com/ko-kr/windows/wsl/tutorials/wsl-vscode) is recommended.
 
+## Tactics
+
+- You can look up [Coq Reference Manual](https://coq.inria.fr/distrib/current/refman/proofs/writing-proofs/index.html) to know more about Coq tactics.
+
 #### Honor Code: *DO NOT CHEAT*
 - Do not copy others' source code, including other students' and resources around the web. Especially, do not consult with public repositories on software foundations.
 - Assignment score will be adjusted with the exam score. See above.
