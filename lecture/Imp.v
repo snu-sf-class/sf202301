@@ -1572,11 +1572,11 @@ Proof.
   (* We must supply the intermediate state *)
   apply E_Seq with (X !-> 2).
   - (* assignment command *)
-    apply E_Asgn. reflexivity.
+    apply E_Asgn. simpl. reflexivity.
   - (* if command *)
     apply E_IfFalse.
-    reflexivity.
-    apply E_Asgn. reflexivity.
+    + simpl. reflexivity.
+    + apply E_Asgn. simpl. reflexivity.
 Qed.
 
 (** **** Exercise: 2 stars, standard (ceval_example2) *)
@@ -1631,6 +1631,10 @@ Theorem ceval_deterministic: forall c st st1 st2,
      st =[ c ]=> st2 ->
      st1 = st2.
 Proof.
+  (* intros. revert st2 H0. *)
+  (* induction H; simpl; intros; *)
+  (* try (try inversion H0; try inversion H1; subst; eauto using ceval; fail). *)
+  (* try inversion H1; subst; eauto using ceval. *)
   intros c st st1 st2 E1 E2.
   generalize dependent st2.
   induction E1; intros st2 E2; inversion E2; subst.
@@ -1655,7 +1659,8 @@ Proof.
     rewrite H in H4. discriminate.
   - (* E_WhileTrue, b evaluates to true *)
     rewrite (IHE1_1 st'0 H3) in *.
-    apply IHE1_2. assumption.  Qed.
+    apply IHE1_2. assumption.
+Qed.
 
 (* ################################################################# *)
 (** * Reasoning About Imp Programs *)
