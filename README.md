@@ -10,6 +10,7 @@
 - Please use email to ask questions (Don't use GitHub Issues)
 
 ## Announcements
+- May. 01: Midterm results is uploaded. During the test, there was some misnotification about partial score. So, I checked submitted files manually and gave some partial score to ones didn't get score due to the machine. If you want to check or have any other questions, email TA(sf@sf.snu.ac.kr).
 - Apr. 20: [Midterm exam announcement](https://github.com/snu-sf-class/sf202301/blob/main/MidtermInstruction.md)
 - Apr. 13: Assignment 2 is uploaded.
 - Apr. 12: Midterm will be held on Apr. 30th Sun, 2 - 5 pm
