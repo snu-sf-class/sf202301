@@ -10,6 +10,7 @@
 - Please use email to ask questions (Don't use GitHub Issues)
 
 ## Announcements
+- May. 09: Assignment 3 is uploaded.
 - May. 01: Midterm results is uploaded. During the test, there was some misnotification about partial score. So, I checked submitted files manually and gave some partial score to ones didn't get score due to the machine. If you want to check or have any other questions, email TA(sf@sf.snu.ac.kr).
 - Apr. 20: [Midterm exam announcement](https://github.com/snu-sf-class/sf202301/blob/main/MidtermInstruction.md)
 - Apr. 13: Assignment 2 is uploaded.
@@ -20,6 +21,8 @@
 ## Assignments
 
 - Download skeleton code and replace `FILL_IN_HERE` with your code in P**.v.
+- If you can't complete a proof, just put `Abort.` after `Proof.`
+- Please check guidance of each assignment in a submission page.
 - **Each assignment have forbidden keyword in forbidden.txt. Try not to use those keywords.**
 - **Assignment with dependencies is scored using default skeleton file as dependencies in server. So, using custom definitions in different files not allowed.**
 - **Try to finish your proof in one proof environment. Write additional 'Lemma' is not recommended. Use 'assert' tactic instead.**
@@ -34,6 +37,7 @@
 |------------	 |---------------------------------------------------------------------------------------
 | Apr. 6 23:59   | Assignment 1 - Basic & Induction 	 	 	 	 	 	 	 	 	 	 	 	 	 	|
 | Apr. 27 23:59  | Assignment 2 - Lists & Poly & Tactics & Logic	 	 	 	 	 	 	 	 	 	 	|
+| May. 23 23:59  | Assignment 3 - IndProp & Imp	 	 	 	 	 	 	 	 	                     	 	|
 
 ## Grading(tentative)
 - Attendance: 5%
