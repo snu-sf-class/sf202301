@@ -187,12 +187,12 @@ Definition Aexp_of_aexp (a : aexp) : Aexp := fun st => aeval st a.
 Coercion assert_of_Prop : Sortclass >-> Assertion.
 Coercion Aexp_of_nat : nat >-> Aexp.
 Coercion Aexp_of_aexp : aexp >-> Aexp.
-Add Printing Coercion Aexp_of_nat Aexp_of_aexp assert_of_Prop.
+(* Add Printing Coercion Aexp_of_nat Aexp_of_aexp assert_of_Prop. *)
 
 Arguments assert_of_Prop /.
 Arguments Aexp_of_nat /.
 Arguments Aexp_of_aexp /.
-Add Printing Coercion Aexp_of_nat Aexp_of_aexp assert_of_Prop.
+(* Add Printing Coercion Aexp_of_nat Aexp_of_aexp assert_of_Prop. *)
 
 Declare Scope assertion_scope.
 Bind Scope assertion_scope with Assertion.
@@ -412,6 +412,10 @@ Proof.
   intros P st st' H HP. inversion H; subst. assumption.
 Qed.
 
+Create HintDb hoare.
+Hint Resolve hoare_skip : hoare.
+
+
 (* ================================================================= *)
 (** ** Sequencing *)
 
@@ -628,7 +632,10 @@ Proof.
   unfold hoare_triple.
   intros Q X a st st' HE HQ.
   inversion HE. subst.
-  unfold assn_sub in HQ. assumption.  Qed.
+  unfold assn_sub in HQ. assumption.
+Qed.
+
+Hint Resolve hoare_asgn : hoare.
 
 (** Here's a first formal proof using this rule. *)
 
@@ -637,7 +644,9 @@ Example assn_sub_example :
     X := X + 1
   {{X < 5}}.
 Proof.
-  apply hoare_asgn.  Qed.
+  apply hoare_asgn.
+Qed.
+
 
 (** Of course, what we'd probably prefer is to prove this
     simpler triple:
@@ -820,6 +829,21 @@ Proof.
   - assumption.
 Qed.
 
+Ltac vc_auto :=
+  unfold assn_sub, t_update; red; simpl; intros; nia.
+       
+Example assn_sub_example' :
+  {{X < 3}}
+    X := X + 1
+  {{X < 5}}.
+Proof.
+  eapply hoare_consequence_pre.
+  - apply hoare_asgn.
+  - vc_auto.
+Qed.
+
+
+
 (** For example, we can use the first consequence rule like this:
 
     {{ True }} ->>
@@ -831,12 +855,17 @@ Qed.
 
 Example hoare_asgn_example1 :
   {{True}} X := 1 {{X = 1}}.
-Proof. 
+Proof.
+  eapply hoare_consequence_pre.
+  - apply hoare_asgn.
+  - vc_auto.
+(*  
   (* WORKED IN CLASS *)
   eapply hoare_consequence_pre. 
   - apply hoare_asgn.
   - unfold "->>", assn_sub, t_update.
     intros st _. simpl. reflexivity.
+*)
 Qed.
 
 (** We can also use it to prove the example mentioned earlier.
@@ -853,11 +882,17 @@ Example assn_sub_example2 :
     X := X + 1
   {{X < 5}}.
 Proof.
+  eapply hoare_consequence_pre.
+  - apply hoare_asgn.
+  - vc_auto.
+
+(*  
   (* WORKED IN CLASS *)
   apply hoare_consequence_pre with (P' := (X < 5) [X |-> X + 1]).
   - apply hoare_asgn.
   - unfold "->>", assn_sub, t_update.
     intros st H. simpl in *. lia.
+*)
 Qed.
 
 (** Finally, here is a combined rule of consequence that allows us to
@@ -1027,9 +1062,13 @@ Example assn_sub_example2' :
 Proof.
   eapply hoare_consequence_pre.
   - apply hoare_asgn.
-  - auto. (* no progress *)
-    unfold "->>", assn_sub, t_update.
-    intros st H. simpl in *. lia.
+  - vc_auto.
+
+  (* eapply hoare_consequence_pre. *)
+  (* - apply hoare_asgn. *)
+  (* - auto. (* no progress *) *)
+  (*   unfold "->>", assn_sub, t_update. *)
+  (*   intros st H. simpl in *. lia. *)
 Qed.
 
 (** Let's introduce our own tactic to handle both that bullet and the
@@ -1074,14 +1113,20 @@ Example assn_sub_ex1' :
     X := 2 * X
   {{ X <= 10 }}.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  eapply hoare_consequence_pre.
+  - eapply hoare_asgn.
+  - vc_auto.
+Qed.  
 
 Example assn_sub_ex2' :
-  {{ 0 <= 3 /\ 3 <= 5 }}
+  {{ True }}
     X := 3
   {{ 0 <= X /\ X <= 5 }}.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  eapply hoare_consequence_pre.
+  - eapply hoare_asgn.
+  - vc_auto.
+Qed.
 
 (** [] *)
 
@@ -1098,6 +1143,12 @@ Example hoare_asgn_example3 : forall (a:aexp) (n:nat),
     skip
   {{X = n}}.
 Proof.
+  intros; eapply hoare_seq.
+  - apply hoare_skip.
+  - eapply hoare_consequence_pre.
+    + apply hoare_asgn.
+    + vc_auto.
+(*    
   intros a n. eapply hoare_seq.
   - (* right part of seq *)
     apply hoare_skip.
@@ -1105,6 +1156,7 @@ Proof.
     eapply hoare_consequence_pre.
     + apply hoare_asgn.
     + assn_auto.
+*)
 Qed.
 
 (** Informally, a nice way of displaying a proof using the sequencing
@@ -1144,6 +1196,14 @@ Example hoare_asgn_example4 :
     Y := 2
   {{ X = 1 /\ Y = 2 }}.
 Proof.
+  eapply hoare_seq.
+  - eapply hoare_asgn.
+  - eapply hoare_consequence_pre.
+    + eapply hoare_asgn.
+    + vc_auto.
+Qed.
+
+(*
   apply hoare_seq with (Q := (X = 1)%assertion).
   (* The annotation [%assertion] is needed here to help Coq parse correctly. *)
   (* FILL IN HERE *) Admitted.
@@ -1161,10 +1221,11 @@ Proof.
     "back to front," from the postcondition to the precondition.  So
     your proof will want to start at the end and work back to the
     beginning of your program.)  *)
+ *)
 
 Definition swap_program : com
   (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
-
+      
 Theorem swap_exercise :
   {{X <= Y}}
     swap_program
