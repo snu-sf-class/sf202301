@@ -10,6 +10,7 @@
 - Please use email to ask questions (Don't use GitHub Issues)
 
 ## Announcements
+- May. 19: Assignment 4 is uploaded.
 - May. 09: Assignment 3 is uploaded.
 - May. 01: Midterm results is uploaded. During the test, there was some misnotification about partial score. So, I checked submitted files manually and gave some partial score to ones didn't get score due to the machine. If you want to check or have any other questions, email TA(sf@sf.snu.ac.kr).
 - Apr. 20: [Midterm exam announcement](https://github.com/snu-sf-class/sf202301/blob/main/MidtermInstruction.md)
@@ -38,6 +39,7 @@
 | Apr. 6 23:59   | Assignment 1 - Basic & Induction 	 	 	 	 	 	 	 	 	 	 	 	 	 	|
 | Apr. 27 23:59  | Assignment 2 - Lists & Poly & Tactics & Logic	 	 	 	 	 	 	 	 	 	 	|
 | May. 23 23:59  | Assignment 3 - IndProp & Imp	 	 	 	 	 	 	 	 	                     	 	|
+| Jun. 02 23:59  | Assignment 4 - Equiv & Hoare	 	 	 	 	 	 	 	 	                     	 	|
 
 ## Grading(tentative)
 - Attendance: 5%
