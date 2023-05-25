@@ -40,8 +40,8 @@
 | Apr. 6 23:59   | Assignment 1 - Basic & Induction 	 	 	 	 	 	 	 	 	 	 	 	 	 	|
 | Apr. 27 23:59  | Assignment 2 - Lists & Poly & Tactics & Logic	 	 	 	 	 	 	 	 	 	 	|
 | May. 23 23:59  | Assignment 3 - IndProp & Imp	 	 	 	 	 	 	 	 	                     	 	|
-| Jun. 02 23:59  | Assignment 4 - Equiv & Hoare	 	 	 	 	 	 	 	 	                     	 	|
-| Jun. 08 23:59  | Assignment 5 - Hoare2 & HoareAsLogic	 	 	 	 	 	 	 	 	                     	 	|
+| Jun. 2 23:59   | Assignment 4 - Equiv & Hoare	 	 	 	 	 	 	 	 	                     	 	|
+| Jun. 6 23:59   | Assignment 5 - Hoare2 & HoareAsLogic	 	 	 	 	 	 	 	 	                     	 	|
 
 ## Grading(tentative)
 - Attendance: 5%
