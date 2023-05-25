@@ -1,0 +1,6 @@
+Axiom
+admit
+Admitted
+tauto
+intuition
+firstorder
