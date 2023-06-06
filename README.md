@@ -10,6 +10,7 @@
 - Please use email to ask questions (Don't use GitHub Issues)
 
 ## Announcements
+- Jun. 07: Assignment 6 is uploaded.
 - May. 25: Assignment 5 is uploaded.
 - May. 19: Assignment 4 is uploaded.
 - May. 09: Assignment 3 is uploaded.
@@ -41,7 +42,8 @@
 | Apr. 27 23:59  | Assignment 2 - Lists & Poly & Tactics & Logic	 	 	 	 	 	 	 	 	 	 	|
 | May. 23 23:59  | Assignment 3 - IndProp & Imp	 	 	 	 	 	 	 	 	                     	 	|
 | Jun. 2 23:59   | Assignment 4 - Equiv & Hoare	 	 	 	 	 	 	 	 	                     	 	|
-| Jun. 6 23:59   | Assignment 5 - Hoare2 & HoareAsLogic	 	 	 	 	 	 	 	 	                     	 	|
+| Jun. 6 23:59   | Assignment 5 - Hoare2 & HoareAsLogic	 	 	 	 	 	 	 	 	                    |
+| Jun. 15 23:59  | Assignment 6 - Smallstep & Types & Stlc & StlcProp & MoreStlc	 	 	 	 	 	 	|
 
 ## Grading(tentative)
 - Attendance: 5%
