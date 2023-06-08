@@ -586,7 +586,7 @@ Inductive appears_free_in (x : string) : tm -> Prop :=
       appears_free_in x <{ let y = t1 in t2 }>
   | afi_fix : forall t,
       appears_free_in x t ->
-      appears_free_in x <{t}>
+        appears_free_in x <{fix t}>
   .
 
 Hint Constructors appears_free_in : core.
