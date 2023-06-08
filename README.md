@@ -11,6 +11,7 @@
 
 ## Announcements
 - Jun. 08: **6/15일은 교수님의 출장 관계로 수업이 없습니다.**
+- Jun. 08: Solution이 공개되었습니다.
 - Jun. 07: Assignment 6 is uploaded.
 - May. 25: Assignment 5 is uploaded.
 - May. 19: Assignment 4 is uploaded.
@@ -44,7 +45,7 @@
 | May. 23 23:59  | Assignment 3 - IndProp & Imp	 	 	 	 	 	 	 	 	                     	 	|
 | Jun. 2 23:59   | Assignment 4 - Equiv & Hoare	 	 	 	 	 	 	 	 	                     	 	|
 | Jun. 6 23:59   | Assignment 5 - Hoare2 & HoareAsLogic	 	 	 	 	 	 	 	 	                    |
-| Jun. 15 23:59  | Assignment 6 - Smallstep & Types & Stlc & StlcProp & MoreStlc	 	 	 	 	 	 	|
+| Jun. 16 23:59  | Assignment 6 - Smallstep & Types & Stlc & StlcProp & MoreStlc	 	 	 	 	 	 	|
 
 ## Grading(tentative)
 - Attendance: 5%
