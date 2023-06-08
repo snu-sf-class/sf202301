@@ -1,3 +1,6 @@
 Require Export P03.
 
-Check canonical_forms_list : forall t T, empty |-- t \in (List T) -> value t -> lvalue T t.
+Check unique_types : forall Gamma e T T',
+  Gamma |-- e \in T ->
+  Gamma |-- e \in T' ->
+  T = T'.

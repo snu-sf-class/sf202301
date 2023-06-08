@@ -252,13 +252,15 @@ Inductive value : tm -> Prop :=
   | v_pair : forall v1 v2,
       value v1 ->
       value v2 ->
-      value <{(v1, v2)}>.
+      value <{(v1, v2)}>
+  | v_fix : forall v1,
+      value v1 ->
+      value <{fix v1}>.
 
 Hint Constructors value : core.
 
 Reserved Notation "t '-->' t'" (at level 40).
 
-(** **** Exercise: 3 stars, standard (STLCExtended.step) *)
 Inductive step : tm -> tm -> Prop :=
   (* pure STLC *)
   | ST_AppAbs : forall x T2 t1 v2,
@@ -370,9 +372,11 @@ Inductive step : tm -> tm -> Prop :=
        t --> t' ->
        <{fix t}> -->
        <{fix t'}>
-  | ST_FixAbs: forall xf T1 t,
-       <{fix (\xf: T1, t)}> -->
-       <{[xf:= (fix (\xf:T1, t))] t}>
+  | ST_FixAbs: forall v1 v2,
+       value v1 ->
+       value v2 ->
+       <{(fix v1) v2}> -->
+       <{(v1 (fix v1)) v2}>
 
   where "t '-->' t'" := (step t t').
 
@@ -466,9 +470,9 @@ Inductive has_type : context -> tm -> ty -> Prop :=
       (x |->T1; Gamma) |-- t2 \in T2 ->
       Gamma |-- (let x = t1 in t2) \in T2
   (* fix *)
-  | T_Fix : forall Gamma t T1,
-      Gamma |-- t \in (T1 -> T1) ->
-      Gamma |-- (fix t) \in T1
+  | T_Fix : forall Gamma t T1 T2,
+      Gamma |-- t \in ((T1 -> T2) -> (T1 -> T2)) ->
+      Gamma |-- (fix t) \in (T1 -> T2)
 
 where "Gamma '|--' t '\in' T" := (has_type Gamma t T).
 

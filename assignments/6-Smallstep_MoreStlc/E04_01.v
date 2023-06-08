@@ -1,6 +1,6 @@
 Require Export P04.
 
-Check unique_types : forall Gamma e T T',
-  Gamma |-- e \in T ->
-  Gamma |-- e \in T' ->
-  T = T'.
+Check context_invariance : forall Gamma Gamma' t T,
+     Gamma |-- t \in T  ->
+     (forall x, appears_free_in x t -> Gamma x = Gamma' x) ->
+     Gamma' |-- t \in T.
