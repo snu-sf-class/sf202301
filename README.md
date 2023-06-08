@@ -10,6 +10,7 @@
 - Please use email to ask questions (Don't use GitHub Issues)
 
 ## Announcements
+- Jun. 08: **6/15일은 교수님의 출장 관계로 수업이 없습니다.**
 - Jun. 07: Assignment 6 is uploaded.
 - May. 25: Assignment 5 is uploaded.
 - May. 19: Assignment 4 is uploaded.
