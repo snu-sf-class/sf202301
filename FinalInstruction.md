@@ -1,4 +1,4 @@
-# Midterm Exam
+# Final Exam
 
 - Date: Jun 18 (Sun), 2pm ~ 5pm (no strict timeout)
 - Place: Hardware Lab (Building 302, Room 310-2)
