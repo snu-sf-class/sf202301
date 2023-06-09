@@ -10,6 +10,7 @@
 - Please use email to ask questions (Don't use GitHub Issues)
 
 ## Announcements
+- Jun. 09: [Final exam announcement](https://github.com/snu-sf-class/sf202301/blob/main/FinalInstruction.md)
 - Jun. 08: **6/15일은 교수님의 출장 관계로 수업이 없습니다.**
 - Jun. 08: Solution이 공개되었습니다.
 - Jun. 07: Assignment 6 is uploaded.
