@@ -282,7 +282,7 @@ Proof.
     + hauto_vc.
       unfold fact. rewrite H1. f_equal. nia.
   - hauto_vc.
-    rewrite sub_diag. simpl; nia.
+    rewrite sub_diag. simpl. nia.
 Qed.
 
 Lemma min_correct_solution: forall (a b: nat),
@@ -299,9 +299,14 @@ Lemma min_correct_solution: forall (a b: nat),
 Proof.
   intros.
   hauto.
-  - hauto_while (assert(Z + X = a /\ Z + Y = b)).
+  - hauto_while (fun st => st Z + min (st X) (st Y) = min a b).
     hauto_vc. destruct H0; hauto.
-  - hauto.
+  - hauto_vc.
+  (* intros. *)
+  (* hauto. *)
+  (* - hauto_while (assert(Z + X = a /\ Z + Y = b)). *)
+  (*   hauto_vc. destruct H0; hauto. *)
+  (* - hauto_vc. *)
 Qed.
 
 Lemma add_3num_correct: forall (a b c: nat),
@@ -321,7 +326,7 @@ Lemma add_3num_correct: forall (a b c: nat),
 Proof.
   intros.
   hauto.
-  - hauto_while (assert(Z = a + Y + c)).
+  - hauto_while (assert(Z = Y + a + c)).
   - hauto_while (assert(Y = 0 /\ Z = X + c)).
   - hauto.
 Qed.
@@ -340,15 +345,13 @@ Lemma power_series_correct_solution: forall (m: nat),
     while ~(X = m) do
       Z := 2 * Z;
       Y := Y + Z;
-      X := X + 1
+      X := 1 + X
     end
   {{ Y = power_series 2 m }}.
 Proof.
   intros.
   hauto.
-  - hauto_while (fun st => st Y = power_series 2 (st X) /\ st Z = 2^(st X)).
-    hauto_vc.
-    rewrite (add_comm (st X)). simpl. nia.
+  - hauto_while (fun st => st Y = power_series 2 (st X) /\ st Z = 2 ^ (st X)).
   - hauto.
 Qed.
 
