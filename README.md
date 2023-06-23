@@ -10,6 +10,7 @@
 - Please use email to ask questions (Don't use GitHub Issues)
 
 ## Announcements
+- Jun. 23: [Total result of this semester](https://github.com/snu-sf-class/sf202301/blob/main/SumOfScores.pdf) is uploaded. If you want to check or have any other questions, email TA(sf@sf.snu.ac.kr). I'll response claim until Jun. 26.
 - Jun. 18: Final results is uploaded. If you want to check or have any other questions, email TA(sf@sf.snu.ac.kr). I'll response claim until Jun. 23.
 - Jun. 09: [Final exam announcement](https://github.com/snu-sf-class/sf202301/blob/main/FinalInstruction.md)
 - Jun. 08: Solution이 공개되었습니다.
